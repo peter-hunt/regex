@@ -1,4 +1,4 @@
-from pattern import _special_chars_map, compile
+from .pattern import _special_chars_map, compile
 
 
 __all__ = [
@@ -11,7 +11,6 @@ __all__ = [
     'sub',
     'subn',
     'escape',
-    'purge'
 ]
 
 

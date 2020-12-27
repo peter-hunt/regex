@@ -1,12 +1,32 @@
-from regex import compile, fullmatch, match
+#!/usr/bin/env python3
+"""
+Tester for Regex Module
 
-pattern = r'12?'
-str_1 = '1'
-str_2 = '12'
+Usage:
+    test <program-id> [options]
+"""
 
-print(compile(pattern))
-print(compile(pattern).nodes)
-print(fullmatch(pattern, str_1))
-print(fullmatch(pattern, str_2))
-print(match(pattern, str_1))
-print(match(pattern, str_2))
+from pathlib import Path
+
+from docopt import docopt
+
+
+def main(argv=None):
+    args = docopt(__doc__, argv)
+
+    if args['<program-id>'] is not None:
+        program_id = args['<program-id>']
+        path = Path(f'tests/{program_id}.py')
+
+        if not path.exists():
+            exit(f'{Path(__file__)}: {path}: No such file or directory')
+        elif path.is_dir():
+            exit(f'{Path(__file__)}: {path}: Is a directory')
+
+        module = getattr(__import__(f'tests.{program_id}'), program_id)
+        for funcname in module.__all__:
+            getattr(module, funcname)()
+
+
+if __name__ == '__main__':
+    main()

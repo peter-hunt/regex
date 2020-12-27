@@ -17,5 +17,14 @@ git clone https://github.com/peter-hunt/regex.git
 
 This project requires Python 3.8+
 
+## Usage
+```python
+import regex
+print(regex.match(r'\w+\d*?', 'peter_hunt123'))
+```
+
+## Known Issues
+Removed param `start` and `end` from `Pattern._match` cause it kept bugging. It won't be friendly to groups later on.
+
 ## License
 [MIT](LICENSE.txt)
