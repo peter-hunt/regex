@@ -9,10 +9,17 @@
 An attempt of recreating Regex with Python
 
 # Installation
-Use git to install Cocktail Lang.
+Use git to install Regex.
+Go to the directory you want to download Regex in, and enter the following command:
 
 ```bash
 git clone https://github.com/peter-hunt/regex.git
+```
+
+Or use pip.
+
+```bash
+pip install git+https://github.com/peter-hunt/regex.git
 ```
 
 This project requires Python 3.8+
@@ -20,7 +27,7 @@ This project requires Python 3.8+
 ## Usage
 ```python
 import regex
-print(regex.match(r'\w+\d*?', 'peter_hunt123'))
+print(regex.match(r'\w+ \d+?', 'peter_hunt 123'))
 ```
 
 ## Known Issues
